@@ -38,4 +38,4 @@ runs:
     - name: 'Run specific export'
       shell: 'bash'
       if: ${{ inputs.collection-ids != '' }}
-      run: 'gcloud firestore export "${{ inputs.bucket-path }}" --collection-ids "${{ inputs.collection-ids }}"'
+      run: 'gcloud firestore export "${{ inputs.bucket-path }}" --collection-ids="${{ inputs.collection-ids }}"'

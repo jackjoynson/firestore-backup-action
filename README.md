@@ -17,3 +17,29 @@ This action uses:
 - https://github.com/google-github-actions/setup-gcloud
 
 This is not an official action.
+
+## Getting started
+
+Here is an example workflow using this action. It runs at midnight every night and can also be run manually.
+
+```yaml
+name: Backup Firestore
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 0 * * *'
+  
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15 # Note: you may need to increase this if you are exporting a large amount of data. 
+    steps:
+      - name: Run backup
+        uses: jackjoynson/firestore-backup-action@v1
+        with:
+          project-id: 'my-cool-project'
+          bucket-path: 'gs://my-backups'
+          service-account-key: '${{ secrets.GCP_SA_KEY }}'
+          collection-ids: 'my-user-data,my-admin-data' # Optional - omit to backup the entire Firestore instance.
+```
