@@ -30,7 +30,7 @@ runs:
       run: 'gcloud info'
     - name: 'Set the project'
       shell: 'bash'
-      run: 'gcloud config set project "${{ inouts.project-id }}"'
+      run: 'gcloud config set project "${{ inputs.project-id }}"'
     - name: 'Run generic export'
       shell: 'bash'
       if: ${{ inputs.collection-ids == '' }}
