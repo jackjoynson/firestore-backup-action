@@ -18,13 +18,13 @@ runs:
   using: 'composite'
   steps:
     - name: 'Login to Google Cloud'
-      uses: 'google-github-actions/auth@v0'
+      uses: 'google-github-actions/auth@v1'
       with:
         credentials_json: '${{ inputs.service-account-key }}'
         export_environment_variables: true
         create_credentials_file: true
     - name: 'Setup Google Cloud SDK'
-      uses: 'google-github-actions/setup-gcloud@v0'
+      uses: 'google-github-actions/setup-gcloud@v1'
     - name: 'Display Google cloud info'
       shell: 'bash'
       run: 'gcloud info'
