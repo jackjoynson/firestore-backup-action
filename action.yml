@@ -23,6 +23,7 @@ runs:
       uses: 'google-github-actions/auth@v2'
       with:
         credentials_json: '${{ inputs.service-account-key }}'
+        project_id: '${{ inputs.project-id }}'
         export_environment_variables: true
         create_credentials_file: true
     - name: 'Setup Google Cloud SDK'
